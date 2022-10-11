@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -114,7 +115,6 @@ fun NavigationController(navController: NavHostController) {
 
     }
 
-
 }
 
 @Composable
@@ -186,7 +186,6 @@ fun Navigation() {
 @Composable
 fun Account(){
     val backgroundImage = painterResource(id = R.drawable.application)
-
     Box{
         Image(painter = backgroundImage, contentDescription ="background image",
             modifier = Modifier
@@ -194,7 +193,7 @@ fun Account(){
                 .fillMaxWidth(),
             contentScale =ContentScale.Crop)}
     var name:String by remember { mutableStateOf("") }
-    var university:String by remember { mutableStateOf("") }
+    var Course:String by remember { mutableStateOf("") }
     var id:String by remember { mutableStateOf("") }
     var email:String by remember { mutableStateOf("") }
     var password:String by remember { mutableStateOf("") }
@@ -208,6 +207,16 @@ fun Account(){
     ) {
 
         item {
+            Image(
+                painter = painterResource(id = R.drawable.mmu),
+                contentDescription = "Website logo",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(0.5.dp),contentScale = ContentScale.Crop
+
+            )
+        }
+        item {
             OutlinedTextField(
                 value = name,
                 onValueChange = {name = it},
@@ -216,9 +225,9 @@ fun Account(){
         }
         item {
             OutlinedTextField(
-                value = university,
-                onValueChange = {university = it},
-                label = { Text(text = "University's Name", fontWeight = FontWeight.Bold)},
+                value = Course,
+                onValueChange = {Course = it},
+                label = { Text(text = "Course", fontWeight = FontWeight.Bold)},
             )
         }
         item {
@@ -283,40 +292,314 @@ fun Home() {
             contentScale = ContentScale.Crop
         )
     }
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(150.dp)
-            .padding(10.dp),
-        backgroundColor = Color.White,
-        elevation = 0.dp,
-    ) {
-        Row(
-            modifier = Modifier.padding(20.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Column() {
+
+
+    LazyColumn() {
+        item {
+            Image(
+                painter = painterResource(id = R.drawable._2),
+                contentDescription = "Website logo",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(0.dp),contentScale = ContentScale.Crop
+
+            )
+        }
+        item {
+            Text(
+                text = "DashBoard",
+                Modifier.padding(5.dp),
+                fontFamily = FontFamily.Default,
+                color = Color.Blue,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+
+                )
+
+            Text(
+                text = "This section round up every details like recent activities of the university,upcoming updates, your dashboard info and evey details.",
+                Modifier.padding(5.dp),
+                fontFamily = FontFamily.Default,
+                color = Color.Gray,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.SemiBold,
+            )
+
+            Button(
+                modifier = Modifier.padding(top = 10.dp),
+                onClick = {},
+                colors = ButtonDefaults.buttonColors(
+                ),
+                contentPadding = PaddingValues(horizontal = 30.dp),
+                elevation = ButtonDefaults.elevation(
+                    defaultElevation = 0.dp,
+                    pressedElevation = 2.dp
+                ),
+
+                )
+            {
                 Text(
-                    text = "DashBoard",
+                    text = "View DashBoard",
+                    Modifier.padding(5.dp),
                     fontFamily = FontFamily.Default,
-                    color = Color.Blue,
+                    color = Color.Yellow,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+        item {
+            Text(
+                text = "Student Profile",
+                Modifier.padding(5.dp),
+                fontFamily = FontFamily.Default,
+                color = Color.Blue,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            Text(
+                text = "Customize your profile here",
+                Modifier.padding(5.dp),
+                fontFamily = FontFamily.Default,
+                color = Color.Gray,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.SemiBold,
+            )
+            Image(
+                painter = painterResource(id = R.drawable.profile),
+                contentDescription = "Website logo",
+            )
+
+            Button(
+                modifier = Modifier.padding(top = 10.dp),
+                onClick = {},
+                colors = ButtonDefaults.buttonColors(
+                ),
+                contentPadding = PaddingValues(horizontal = 30.dp),
+                elevation = ButtonDefaults.elevation(
+                    defaultElevation = 0.dp,
+                    pressedElevation = 2.dp
+                ),
+
+                )
+            {
+
+                Text(
+                    text = "View Profile",
+                    Modifier.padding(5.dp),
+                    fontFamily = FontFamily.Default,
+                    color = Color.Yellow,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+        item {
+            Text(
+                text = "Upcoming Events and Updates",
+                Modifier.padding(5.dp),
+                fontFamily = FontFamily.Default,
+                color = Color.Blue,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            Text(
+                text = "View latest updates and upcoming events of  the university here",
+                Modifier.padding(5.dp),
+                fontFamily = FontFamily.Default,
+                color = Color.Gray,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.SemiBold,
+            )
+            Button(
+                modifier = Modifier.padding(top = 10.dp),
+                onClick = {},
+                colors = ButtonDefaults.buttonColors(
+                ),
+                contentPadding = PaddingValues(horizontal = 30.dp),
+                elevation = ButtonDefaults.elevation(
+                    defaultElevation = 0.dp,
+                    pressedElevation = 2.dp
+                ),
+
+                )
+            {
+
+                Text(
+                    text = "View",
+                    Modifier.padding(5.dp),
+                    fontFamily = FontFamily.Default,
+                    color = Color.Yellow,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold
+                )
+
+
+            }
+
+
+        }
+
+
+    }
+}
+
+
+    @Composable
+    fun Settings() {
+        Text(
+            text = "Settings",
+            fontFamily = FontFamily.Default,
+            color = Color.Blue,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 30.dp, bottom = 10.dp),
+            fontWeight = FontWeight.ExtraBold,
+            fontSize = 25.sp
+        )
+        val backgroundImage = painterResource(id = R.drawable.application)
+
+        Box {
+            Image(
+                painter = backgroundImage, contentDescription = "background image",
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(),
+                contentScale = ContentScale.Crop
+            )
+        }
+
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(720.dp)
+                .padding(10.dp),
+            backgroundColor = Color.White,
+            elevation = 0.dp,
+
+            ) {
+            Row(
+                modifier = Modifier.padding(20.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Column() {
+                    Text(
+                        text = "Settings ",
+                        fontFamily = FontFamily.Default,
+                        color = Color.Blue,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
+
+                    Text(
+                        text = "Customize all your settings of the app here",
+                        fontFamily = FontFamily.Default,
+                        color = Color.Gray,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+
+                    Text(text = "General Settings\n", fontSize = 20.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,)
+                    Text(text = "Home Settings\n", fontSize = 20.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,)
+                    Text(text = "Account Settings\n", fontSize = 20.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,)
+                    Text(text = "Password & Security\n", fontSize = 20.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,)
+                    Text(text = "Notification and Control Center\n", fontSize = 20.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,)
+                    Text(text = "Additional Settings\n", fontSize = 20.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,)
+                    Text(text = "About My Courses\n", fontSize = 20.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,)
+                    Button(
+                        modifier = Modifier.padding(top = 10.dp),
+                        onClick = {},
+                        colors = ButtonDefaults.buttonColors(
+
+                        ),
+                        contentPadding = PaddingValues(horizontal = 30.dp),
+                        elevation = ButtonDefaults.elevation(
+                            defaultElevation = 0.dp,
+                            pressedElevation = 2.dp
+                        ),
+
+                        ) {
+                        Text(
+                            text = " Go to Settings",
+                            fontFamily = FontFamily.Default,
+                            color = Color.Yellow,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+
+
+
+                }
+
+            }
+        }
+    }
+
+
+    @Composable
+    fun Syllabus() {
+
+        val backgroundImage = painterResource(id = R.drawable.coursess)
+
+        Box {
+            Image(
+                painter = backgroundImage, contentDescription = "background Image",
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(),
+                contentScale = ContentScale.Crop
+            )
+        }
+        LazyColumn() {
+            item {
+                Image(
+                    painter = painterResource(id = R.drawable.syllabus),
+                    contentDescription = "Website logo",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(0.dp),contentScale = ContentScale.Crop
+
+                )
+            }
+
+            item {
+                Text(
+                    text = "View your Syllabus Here",
+                    Modifier.padding(5.dp),
+                    fontFamily = FontFamily.Default,
+                    color = Color.Magenta,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                 )
-
                 Text(
-                    text = "This section round up every details like recent activities of the university,upcoming updates, your dashboard info etc",
+                    text = "All the Syllabus of your course is available here of entire course period.\n" +
+                            " The syllabus of your course is below.",
+                    Modifier.padding(5.dp),
                     fontFamily = FontFamily.Default,
-                    color = Color.Gray,
+                    color = Color.White,
                     fontSize = 10.sp,
                     fontWeight = FontWeight.SemiBold,
                 )
-
                 Button(
                     modifier = Modifier.padding(top = 10.dp),
                     onClick = {},
                     colors = ButtonDefaults.buttonColors(
-
                     ),
                     contentPadding = PaddingValues(horizontal = 30.dp),
                     elevation = ButtonDefaults.elevation(
@@ -324,9 +607,12 @@ fun Home() {
                         pressedElevation = 2.dp
                     ),
 
-                    ) {
+                    )
+                {
+
                     Text(
-                        text = "View",
+                        text = "View Syllabus",
+                        Modifier.padding(5.dp),
                         fontFamily = FontFamily.Default,
                         color = Color.Yellow,
                         fontSize = 12.sp,
@@ -337,173 +623,11 @@ fun Home() {
 
         }
     }
-}
 
-        @Composable
-        fun Settings() {
-            Text(
-                text = "Settings",
-                fontFamily = FontFamily.Default,
-                color = Color.Blue,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 30.dp, bottom = 10.dp),
-                fontWeight = FontWeight.ExtraBold,
-                fontSize = 25.sp
-            )
-            val backgroundImage = painterResource(id = R.drawable.application)
-
-            Box {
-                Image(
-                    painter = backgroundImage, contentDescription = "background image",
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .fillMaxWidth(),
-                    contentScale = ContentScale.Crop
-                )
-            }
-
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(150.dp)
-                    .padding(10.dp),
-                backgroundColor = Color.White,
-                elevation = 0.dp,
-
-                ) {
-                Row(
-                    modifier = Modifier.padding(20.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Column() {
-                        Text(
-                            text = "Settings ",
-                            fontFamily = FontFamily.Default,
-                            color = Color.Blue,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
-                        )
-
-                        Text(
-                            text = "Customize all your settings of the app here",
-                            fontFamily = FontFamily.Default,
-                            color = Color.Gray,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.SemiBold,
-                        )
-
-                        Button(
-                            modifier = Modifier.padding(top = 10.dp),
-                            onClick = {},
-                            colors = ButtonDefaults.buttonColors(
-
-                            ),
-                            contentPadding = PaddingValues(horizontal = 30.dp),
-                            elevation = ButtonDefaults.elevation(
-                                defaultElevation = 0.dp,
-                                pressedElevation = 2.dp
-                            ),
-
-                            ) {
-                            Text(
-                                text = "Settings",
-                                fontFamily = FontFamily.Default,
-                                color = Color.Yellow,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                        }
-
-                    }
-
-                }
-            }
-        }
-
-
-        @Composable
-        fun Syllabus() {
-
-            val backgroundImage = painterResource(id = R.drawable.application)
-
-            Box {
-                Image(
-                    painter = backgroundImage, contentDescription = "background image",
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .fillMaxWidth(),
-                    contentScale = ContentScale.Crop
-                )
-            }
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Top,
-                horizontalAlignment = CenterHorizontally
-            )
-            {
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(150.dp)
-                        .padding(10.dp),
-                    backgroundColor = Color.White,
-                    elevation = 0.dp,
-
-                    ) {
-                    Row(
-                        modifier = Modifier.padding(20.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Column() {
-                            Text(
-                                text = "Syllabus details",
-                                fontFamily = FontFamily.Default,
-                                color = Color.Blue,
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.Bold,
-                            )
-
-                            Text(
-                                text = "This section will show the syllabus of the each subjects of the courses that you have taken.",
-                                fontFamily = FontFamily.Default,
-                                color = Color.Gray,
-                                fontSize = 10.sp,
-                                fontWeight = FontWeight.SemiBold,
-                            )
-
-                            Button(
-                                modifier = Modifier.padding(top = 10.dp),
-                                onClick = {},
-                                colors = ButtonDefaults.buttonColors(
-
-                                ),
-                                contentPadding = PaddingValues(horizontal = 30.dp),
-                                elevation = ButtonDefaults.elevation(
-                                    defaultElevation = 0.dp,
-                                    pressedElevation = 2.dp
-                                ),
-
-                                ) {
-                                Text(
-                                    text = "View",
-                                    fontFamily = FontFamily.Default,
-                                    color = Color.Yellow,
-                                    fontSize = 12.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
-                            }
-                        }
-
-                    }
-                }
-            }
-        }
 
         @Composable
         fun Courses() {
-            val backgroundImage = painterResource(id = R.drawable.application)
+            val backgroundImage = painterResource(id = R.drawable.coursess)
 
             Box {
                 Image(
@@ -515,60 +639,153 @@ fun Home() {
                     contentScale = ContentScale.Crop
                 )
             }
+            LazyColumn() {
+                item {
+                    Image(
+                        painter = painterResource(id = R.drawable.course),
+                        contentDescription = "Website logo",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(0.dp), contentScale = ContentScale.Crop
 
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(170.dp)
-                    .padding(15.dp),
-                backgroundColor = Color.White,
-                elevation = 0.dp,
+                    )
+                }
 
-                ) {
-                Row(
-                    modifier = Modifier.padding(20.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Column() {
+                item {
+                    Text(
+                        text = "University Course Content",
+                        Modifier.padding(5.dp),
+                        fontFamily = FontFamily.Default,
+                        color = Color.Magenta,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
+                    Text(
+                        text = "All the course provided by the university can be viewed and accessed here.",
+                        Modifier.padding(5.dp),
+                        fontFamily = FontFamily.Default,
+                        color = Color.White,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Button(
+                        modifier = Modifier.padding(top = 10.dp),
+                        onClick = {},
+                        colors = ButtonDefaults.buttonColors(
+                        ),
+                        contentPadding = PaddingValues(horizontal = 30.dp),
+                        elevation = ButtonDefaults.elevation(
+                            defaultElevation = 0.dp,
+                            pressedElevation = 2.dp
+                        ),
+
+                        )
+                    {
+
                         Text(
-                            text = "Courses Information",
+                            text = "View All",
+                            Modifier.padding(5.dp),
                             fontFamily = FontFamily.Default,
-                            color = Color.Blue,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
+                            color = Color.Magenta,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+                item {
+                    Text(
+                        text = "Top Courses",
+                        Modifier.padding(5.dp),
+                        fontFamily = FontFamily.Default,
+                        color = Color.Magenta,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
+                    Text(
+                        text = "View all the top courses for better job opportunities",
+                        Modifier.padding(5.dp),
+                        fontFamily = FontFamily.Default,
+                        color = Color.White,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Button(
+                        modifier = Modifier.padding(top = 10.dp),
+                        onClick = {},
+                        colors = ButtonDefaults.buttonColors(
+                        ),
+                        contentPadding = PaddingValues(horizontal = 30.dp),
+                        elevation = ButtonDefaults.elevation(
+                            defaultElevation = 0.dp,
+                            pressedElevation = 2.dp
+                        ),
+
+                        )
+                    {
+
+                        Text(
+                            text = "Best Courses",
+                            Modifier.padding(5.dp),
+                            fontFamily = FontFamily.Default,
+                            color = Color.Magenta,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold
                         )
 
-                        Text(
-                            text = "In this section you can view all your courses information that you are pursuing in the college. ",
-                            fontFamily = FontFamily.Default,
-                            color = Color.Gray,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.SemiBold,
-                        )
 
-                        Button(
-                            modifier = Modifier.padding(top = 10.dp),
-                            onClick = {},
-                            colors = ButtonDefaults.buttonColors(
-
-                            ),
-                            contentPadding = PaddingValues(horizontal = 30.dp),
-                            elevation = ButtonDefaults.elevation(
-                                defaultElevation = 0.dp,
-                                pressedElevation = 2.dp
-                            ),
-
-                            ) {
-                            Text(
-                                text = "View",
-                                fontFamily = FontFamily.Default,
-                                color = Color.Yellow,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                        }
                     }
 
-        }}}
+
+                }
+                item {
+                    Text(
+                        text = "Purchase Courses Online",
+                        Modifier.padding(5.dp),
+                        fontFamily = FontFamily.Default,
+                        color = Color.Magenta,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
+                    Text(
+                        text = "You can buy courses form various online platforms such as udemy,coding ninja etc.",
+                        Modifier.padding(5.dp),
+                        fontFamily = FontFamily.Default,
+                        color = Color.White,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Button(
+                        modifier = Modifier.padding(top = 10.dp),
+                        onClick = {},
+                        colors = ButtonDefaults.buttonColors(
+                        ),
+                        contentPadding = PaddingValues(horizontal = 30.dp),
+                        elevation = ButtonDefaults.elevation(
+                            defaultElevation = 0.dp,
+                            pressedElevation = 2.dp
+                        ),
+
+                        )
+                    {
+
+                        Text(
+                            text = "Purchase",
+                            Modifier.padding(5.dp),
+                            fontFamily = FontFamily.Default,
+                            color = Color.Magenta,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+
+
+                    }
+
+
+                }
+
+
+            }
+        }
+
 
 
